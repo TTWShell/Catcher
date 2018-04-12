@@ -48,3 +48,6 @@ Telegraf (StatsD) + InfluxDB (storage) + Grafana (dashboard).
 4. [https://opsx.alibaba.com/mirror](https://opsx.alibaba.com/mirror)
 5. [https://portal.influxdata.com/downloads](https://portal.influxdata.com/downloads)
 6. [https://www.influxdata.com/blog/sensu-influxdb-storing-data-metrics-collection-checks/](https://www.influxdata.com/blog/sensu-influxdb-storing-data-metrics-collection-checks/)
+7. [https://www.influxdata.com/blog/how-to-use-grafana-with-influxdb-to-monitor-time-series-data/](https://www.influxdata.com/blog/how-to-use-grafana-with-influxdb-to-monitor-time-series-data/)
+8. [https://github.com/grafana/grafana](https://github.com/grafana/grafana)
+9. [https://grafana.com/grafana/download](https://grafana.com/grafana/download)

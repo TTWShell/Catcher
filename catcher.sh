@@ -12,6 +12,7 @@ RUNTIME_IMAGE="${REGISTRY}/${PROJECT_NAME}:${IMG_TAG}-runtime"
 CUR_DIR=$(pwd)
 LOG_DIR="/data/catcher/logs"
 INFLUXDB_DIR="/data/catcher/influxdb"
+GRAFANA_DIR="/data/catcher/grafana"
 
 function create_data_volume {
     docker inspect ${PROJECT_NAME}-data &> /dev/null
@@ -20,6 +21,7 @@ function create_data_volume {
             -v ${CUR_DIR}:/root/catcher \
             -v ${LOG_DIR}:/root/catcher/logs \
             -v ${INFLUXDB_DIR}:/root/catcher/influxdb/storage \
+            -v ${GRAFANA_DIR}:/root/catcher/grafana/storage \
             hub.c.163.com/library/alpine:3.6 /bin/true
     fi
 }
