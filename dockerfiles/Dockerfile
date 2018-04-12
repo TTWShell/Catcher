@@ -15,7 +15,8 @@ RUN apt-get -y update && \
    wget \
    --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root
+RUN mkdir /root/catcher
+WORKDIR /root/catcher
 
 # https://portal.influxdata.com/downloads
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.5.3-1_amd64.deb

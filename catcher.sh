@@ -9,13 +9,15 @@ IMG_NAME="catcher"
 IMG_TAG="latest"
 RUNTIME_IMAGE="${REGISTRY}/${IMG_NAME}:${IMG_TAG}-runtime"
 
-CUR_DIR=${pwd}
+CUR_DIR=$(pwd)
+LOG_DIR="/data/catcher/logs"
 
 function create_data_volume {
     docker inspect ${IMG_NAME}-data &> /dev/null
     if [[ "$?" == "1" ]]; then
         docker create --name ${IMG_NAME}-data \
-            -v ${CUR_DIR}:/root \
+            -v ${CUR_DIR}:/root/catcher \
+            -v ${LOG_DIR}:/root/catcher/logs \
             hub.c.163.com/library/alpine:3.6 /bin/true
     fi
 }
@@ -33,10 +35,10 @@ function release-img {
 function shell {
     create_data_volume
     docker run --rm -it \
-    --volumes-from ${IMG_NAME}-data \
-    --net=host \
-    ${RUNTIME_IMAGE} \
-    /bin/bash
+        --volumes-from ${IMG_NAME}-data \
+        --net=host \
+        ${RUNTIME_IMAGE} \
+        /bin/bash
 }
 
 
