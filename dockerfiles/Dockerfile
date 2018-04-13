@@ -10,6 +10,8 @@ COPY sources.list /etc/apt/sources.list
 RUN apt-get -y update && \
  apt-get -y install \
    ca-certificates \
+   sqlite3 \
+   vim \
    supervisor \
    netcat \
    git \
@@ -30,7 +32,5 @@ RUN dpkg -i influxdb_1.5.1_amd64.deb && rm influxdb_1.5.1_amd64.deb
 
 RUN wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.0.4_amd64.deb
 RUN dpkg -i grafana_5.0.4_amd64.deb && rm grafana_5.0.4_amd64.deb
-# http://docs.grafana.org/installation/configuration/#config-file-locations
-COPY grafana.ini /etc/grafana/grafana.ini
 
 EXPOSE 8125:8125/udp
