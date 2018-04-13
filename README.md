@@ -1,8 +1,6 @@
 # Catcher
 
-Telegraf (StatsD) + InfluxDB (storage) + Grafana (dashboard).
-
-一个单机部署的demo，仅供参考。可以自行集群化各组件。你可以从这个demo学会：
+Telegraf (StatsD) + InfluxDB (storage) + Grafana (dashboard).一个单机部署的demo，仅供参考。你可以从这个demo学会：
 
 1. 一个业界广泛使用的监控方案；
 2. docker的基本使用。
@@ -25,47 +23,47 @@ Telegraf (StatsD) + InfluxDB (storage) + Grafana (dashboard).
 
 1. 程序启动:
 
-    ./catcher.sh start
+        ./catcher.sh start
 
 2. 发送statsd数据到influxdb：
 
-    for i in `seq 1 100`; do echo "mycounter:10|c" | nc -C -w 1 -u 10.30.138.179 8125; done
+        for i in `seq 1 100`; do echo "mycounter:10|c" | nc -C -w 1 -u 10.30.138.179 8125; done
 
 3. 确认数据入库：
 
-进入shell环境 (`./catcher.sh shell`)，使用influx命令，你将会在数据库看到记录。
+    进入shell环境 (`./catcher.sh shell`)，使用influx命令，你将会在数据库看到记录。
 
-    Connected to http://localhost:8086 version 1.5.1
-    InfluxDB shell version: 1.5.1
-    > use telegraf;
-    Using database telegraf
-    > show measurements;
-    name: measurements
-    name
-    ----
-    cpu
-    disk
-    diskio
-    kernel
-    mem
-    mycounter
-    processes
-    swap
-    system
-    > select * from mycounter;
-    name: mycounter
-    time                host                    metric_type value
-    ----                ----                    ----------- -----
-    1523512020000000000 iZ2ze12cw2az4c7fwkbv8lZ counter     10
-    >
+        Connected to http://localhost:8086 version 1.5.1
+        InfluxDB shell version: 1.5.1
+        > use telegraf;
+        Using database telegraf
+        > show measurements;
+        name: measurements
+        name
+        ----
+        cpu
+        disk
+        diskio
+        kernel
+        mem
+        mycounter
+        processes
+        swap
+        system
+        > select * from mycounter;
+        name: mycounter
+        time                host                    metric_type value
+        ----                ----                    ----------- -----
+        1523512020000000000 iZ2ze12cw2az4c7fwkbv8lZ counter     10
+        >
 
 4. 进入Grafana Dashboards:
 
-Grafana服务运行在0.0.0.0:8000，你可以直接展示给内网用户，浏览器访问 http://host:8000 即可。用户名密码默认为admin:admin。
+    Grafana服务运行在0.0.0.0:8000，你可以直接展示给内网用户，浏览器访问 http://host:8000 即可。用户名密码默认为admin:admin。
 
 5. 最终效果图:
 
-![img](https://user-images.githubusercontent.com/8017604/38741258-20a8a89e-3f6c-11e8-9f1a-6af490af0a21.png)
+    ![img](https://user-images.githubusercontent.com/8017604/38741258-20a8a89e-3f6c-11e8-9f1a-6af490af0a21.png)
 
 ## Note
 
