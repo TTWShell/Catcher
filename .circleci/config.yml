@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: ./catcher.sh help
+      - run: docker login registry.cn-beijing.aliyuncs.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD
+      - run: ./catcher.sh build-img
+      - run: ./catcher.sh release-img
+  start_and_test:
+    machine: true
+    steps:
+      - checkout
+      - run: ./catcher.sh start && sleep 15
+      - run: curl --retry 10 --retry-delay 5 -L -I -f http://localhost:8000/
+      - run: nc localhost 8086 &> /dev/null; echo $?
+      - run: wget http://localhost:8000
+      - run: docker ps -a
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build
+      - start_and_test:
+          requires:
+              - build

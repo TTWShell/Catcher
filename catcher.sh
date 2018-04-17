@@ -4,7 +4,7 @@ function echoo {
     echo -e "\033[32m $1 \033[0m"
 }
 
-REGISTRY="registry-internal.cn-beijing.aliyuncs.com/ttwshell"
+REGISTRY="registry.cn-beijing.aliyuncs.com/ttwshell"
 PROJECT_NAME="catcher"
 IMG_TAG="latest"
 RUNTIME_IMAGE="${REGISTRY}/${PROJECT_NAME}:${IMG_TAG}-runtime"
@@ -96,5 +96,6 @@ case "${Action}" in
     shell) shell;;
     start) start;;
     stop) stop;;
+    help) usage ;;
     *) usage && exit 1 ;;
 esac
