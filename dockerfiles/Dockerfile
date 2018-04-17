@@ -24,13 +24,16 @@ RUN mkdir /root/catcher
 WORKDIR /root/catcher
 
 # https://portal.influxdata.com/downloads
-RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.5.3-1_amd64.deb
-RUN dpkg -i telegraf_1.5.3-1_amd64.deb && rm telegraf_1.5.3-1_amd64.deb
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.5.3-1_amd64.deb && \
+    dpkg -i telegraf_1.5.3-1_amd64.deb && \
+    rm telegraf_1.5.3-1_amd64.deb
 
-RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_1.5.1_amd64.deb
-RUN dpkg -i influxdb_1.5.1_amd64.deb && rm influxdb_1.5.1_amd64.deb
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_1.5.1_amd64.deb && \
+    dpkg -i influxdb_1.5.1_amd64.deb && \
+    rm influxdb_1.5.1_amd64.deb
 
-RUN wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.0.4_amd64.deb
-RUN dpkg -i grafana_5.0.4_amd64.deb && rm grafana_5.0.4_amd64.deb
+RUN wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.0.4_amd64.deb && \
+    dpkg -i grafana_5.0.4_amd64.deb && \
+    rm grafana_5.0.4_amd64.deb
 
 EXPOSE 8125:8125/udp
