@@ -1,5 +1,7 @@
 # Catcher
 
+[![CircleCI](https://circleci.com/gh/TTWShell/Catcher/tree/master.svg?style=svg)](https://circleci.com/gh/TTWShell/Catcher/tree/master)
+
 Telegraf (StatsD) + InfluxDB (storage) + Grafana (dashboard).一个单机部署的demo，仅供参考。你可以从这个demo学会：
 
 1. 一个业界广泛使用的监控方案；
